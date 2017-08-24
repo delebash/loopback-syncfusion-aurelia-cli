@@ -1,18 +1,18 @@
 import {inject} from 'aurelia-framework';
-import {LoopBackadaptor} from '../services/syncfusion-loopback-adaptor';
-import {AuthenticationService} from '../services/auth-service';
-//import dfconfig from '../config/dreamfactory-config'
+import {AuthenticationService} from '../services/auth-service'
+import {DreamFactoryAdaptor} from '../services/syncfusion-dreamfactory-adaptor';
+import {Endpoint} from 'aurelia-api';
 
-@inject(AuthenticationService,LoopBackadaptor)
+@inject(AuthenticationService,DreamFactoryAdaptor)
 export class GridQuery {
   constructor(authservice,adaptor) {
-    this.authservice = authservice;
-    this.adaptor = adaptor;
+    this.authservice = authservice
+    this.adaptor = adaptor
   }
 
   attached() {
     if (this.authservice.authenticated === false) {
-      alert('please login');
+      alert('please login')
     } else {
       this.getdata();
     }
@@ -24,7 +24,7 @@ export class GridQuery {
 
     let dataManager = ej.DataManager({
       url: "http://localhost:3000/api/customers",
-      adaptor: new this.adaptor.loopbackadaptor(adaptorOptions),
+      adaptor: new this.adaptor.syncfusionDreamFactoryAdaptor(adaptorOptions),
     });
 
     $("#Grid").ejGrid({
