@@ -1,6 +1,6 @@
-export class LoopBackyAdaptor {
+export class LoopBackAdaptor {
 
-  syncfusionLoopBackAdaptor = new ej.ODataAdaptor().extend({
+  loopbackAdapter = new ej.ODataAdaptor().extend({
 
     init: function (adaptorOptions) {
 

@@ -1,20 +1,20 @@
 import {inject} from 'aurelia-framework';
 import {AuthenticationService} from '../services/auth-service'
-import {LoopBackAdapter} from '../services/syncfusion-dreamfactory-adaptor';
+import {LoopBackAdaptor} from '../services/syncfusion-loopback-adaptor';
 import {Endpoint} from 'aurelia-api';
 
-@inject(AuthenticationService,LoopBackAdapter,Endpoint.of('api'))
+@inject(AuthenticationService,LoopBackAdaptor,Endpoint.of('api'))
 export class GridRemote {
 
-  constructor(authservice,adapter,api) {
-    this.adaptor = adapter
+  constructor(authservice,adaptor,api) {
+    this.adaptor = adaptor
     this.api = api;
     this.authservice = authservice;
     let adaptorOptions = {requestType: "json"}; //defaults to "get" if not specified or not passed in
         //requestType = "get" -- request uses query string params via get, "json" -- request uses post to send an object
      this.gridData = ej.DataManager({
       url:"http://localhost:3000/api/customers/",
-       adaptor: new this.adaptor.syncfusionDreamFactoryAdaptor(adaptorOptions),
+       adaptor: new this.adaptor.loopbackAdaptor(adaptorOptions),
     });
 
 

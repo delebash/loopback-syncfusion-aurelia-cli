@@ -12,10 +12,8 @@ export function configurePlugins(aurelia, globalConfig) {
     .plugin('aurelia-syncfusion-bridge', (syncfusion) => syncfusion.ejGrid())
     .plugin('aurelia-api', config => {
       config.registerEndpoint('auth');
-      config.registerEndpoint('api', 'http://localhost:3000/api/')
+      config.registerEndpoint('api', 'http://localhost:3000/api/');
     })
-    // .plugin('aurelia-interactjs') // Add this line to load interact.js (optional)
-    // .plugin('aurelia-editables') // Add this line to load the plugin
     .plugin('aurelia-authentication', baseConfig => {
       baseConfig.configure(authconfig);
     })
