@@ -13,7 +13,7 @@ export class Admin {
 
   async created() {
     let data = await this.api.find('customers');
-    this.contacts = data
+    this.contacts = data.rows
   }
 
   select(contact) {
